@@ -1,0 +1,113 @@
+DROP DATABASE IF EXISTS SocialNetwork;
+
+CREATE DATABASE IF NOT EXISTS SocialNetwork;
+
+USE SocialNetwork;
+
+CREATE TABLE `users` (
+	`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+	`username` varchar(32) DEFAULT NULL,
+	`password` varchar(60) DEFAULT NULL,
+	`email` text,
+	`verified` tinyint(1) NOT NULL DEFAULT '0',
+	`profileimg` varchar(255) DEFAULT NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB COLLATE utf8_general_ci;
+
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `verified`) VALUES
+(1, 'verified', '$2y$10$nw.PNYv5NkqWS2fLakLBpeb/u1obZv4ZBe5QZgXvc9G.700h6bKhy', 'verified@squad.com', 'image/avatar.png'),
+(2, 'Sai-kotic', '$2y$10$2eTl109Nab8aLLO.51jteeSGS4c6eBiJfCYFMTVxAzTo8cdfkLvw.', 'ashleigh.m724@gmail.com', 'image/avatar.png');
+
+CREATE TABLE `login_tokens` (
+	`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+	`token` char(64) NOT NULL DEFAULT '',
+	`user_id` int(11) unsigned NOT NULL,
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `token` (`token`),
+	KEY `user_id` (`user_id`),
+	FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB COLLATE utf8_general_ci;
+
+CREATE TABLE `password_tokens` (
+	`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+	`token` char(64) NOT NULL DEFAULT '',
+	`user_id` int(11) unsigned NOT NULL,
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `token` (`token`)
+) ENGINE=InnoDB COLLATE utf8_general_ci;
+
+CREATE TABLE `followers` (
+	`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+	`user_id` int(11) unsigned NOT NULL,
+	`follower_id` int(11) unsigned NOT NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB COLLATE utf8_general_ci;
+
+CREATE TABLE `posts` (
+	`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+	`body` varchar(160) DEFAULT '',
+	`posted_at` datetime NOT NULL,
+	`user_id` int(11) unsigned NOT NULL,
+	`likes` int(11) unsigned NOT NULL,
+	`postimg` varchar(255) DEFAULT NULL,
+	`topics` varchar(400) DEFAULT NULL,
+	PRIMARY KEY (`id`),
+	KEY `user_id` (`user_id`),
+	FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB COLLATE utf8_general_ci;
+
+CREATE TABLE `post_likes` (
+	`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+	`post_id` int(11) unsigned NOT NULL,
+	`user_id` int(11) unsigned NOT NUll,
+	PRIMARY KEY (`id`),
+	KEY `post_id` (`post_id`),
+	KEY `user_id` (`user_id`),
+	FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
+	FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB COLLATE utf8_general_ci;
+
+CREATE TABLE `comments` (
+	`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+	`comment` text NOT NULL,
+	`user_id` int(11) unsigned NOT NULL,
+	`posted_at` datetime NOT NULL,
+	`post_id` int(11) unsigned NOT NULL,
+	PRIMARY KEY (`id`),
+	KEY `post_id` (`post_id`),
+	KEY `user_id` (`user_id`),
+	FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
+	FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB COLLATE utf8_general_ci;
+
+CREATE TABLE `notifications` (
+	`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+	`type` int(11) unsigned NOT NULL,
+	`receiver` int(10) unsigned NOT NULL,
+	`sender` int(11) unsigned NOT NULL,
+	`extra` text,
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB COLLATE utf8_general_ci;
+
+CREATE TABLE `messages` (
+	`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+	`body` text NOT NULL,
+	`sender` int(11) unsigned NOT NULL,
+	`receiver` int(11) unsigned NOT NULL,
+	`read` tinyint(1) unsigned NOT NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB COLLATE utf8_general_ci;
+
+CREATE TABLE `details` (
+	`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+	`user_id` int(11) unsigned NOT NULL,
+	`firstname` varchar(32) DEFAULT NULL,
+	`lastname` varchar(32) DEFAULT NULL,
+	`worksat` varchar(32) DEFAULT NULL,
+	`livesat` varchar(32) DEFAULT NULL,
+	`birthday` datetime NOT NULL,
+	`email` boolean DEFAULT TRUE,
+	PRIMARY KEY (`id`),
+	KEY `user_id` (`user_id`),
+	FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB COLLATE utf8_general_ci;

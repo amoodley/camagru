@@ -1,0 +1,9 @@
+//Client ID: 138f68a88fc3c30
+//Client secret: 7211a541de56107555a4952fce5a8e0630853698
+
+//Authorization: https://api.imgur.com/oauth2/authorize?client_id=f7e5d5582364a2f&response_type=token
+
+https://imgur.com/#access_token=9e5addc0d992dea6f0915cfeba92625b39a37900&expires_in=315360000&token_type=bearer&refresh_token=e494c785dbfefb2ef4bd36ab8d381e496b831e17&account_username=Sai724&account_id=75287813
+
+//access token: 9e5addc0d992dea6f0915cfeba92625b39a37900
+//refresh token: e494c785dbfefb2ef4bd36ab8d381e496b831e17

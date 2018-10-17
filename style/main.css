@@ -1,0 +1,206 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, Sans-serif;
+}
+body {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: #111111;
+}
+#headerBar {
+	top: 0;
+	background-color: #232323;
+	height: 8%;
+	width: 100%;
+	position: fixed; 	
+}
+#logo-container {
+	text-align: center;
+}
+.logo1 {
+	position: fixed;
+	top: 0;
+	height: 8%;
+	left: 5%;
+	width: 150px;
+	background-image: url('../image/squad_logo2_white.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.leftSpacer {
+	position: absolute;
+	width: 50%;
+	top: 8%;
+	left: 0;
+	color: white;
+	display: block;
+}
+.loginContainer {
+	position: absolute;
+	width: 50%;
+	top: 8%;
+	height: 89%;
+	right: 0;
+	color: white;
+}
+.form {
+	margin: 5%;
+	background-color: #111111;
+}
+@media only screen and (max-width: 720px) {
+	.leftSpacer {
+		display: none;
+	}
+	.loginContainer {
+
+		width: 100%;
+	}
+}
+h1 {
+	text-align: center;
+	padding: 1vw;
+	font-size: 4vw;
+}
+#error {
+	text-align: center;
+	color: red;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+	color: white;
+}
+.wrap {
+	width: 45%;
+	float: left;
+	padding: 1.5%;
+	margin: 2.5%;
+	border: none;
+	background-color: #282828;
+}
+.full {
+	width: 95%;
+	padding: 1.5%;
+	margin: 2.5%;
+	border: none;
+	background-color: #282828;
+}
+.terms {
+	font-size: 1vw;
+	padding: 0.5%;
+	margin: 1% 2.5% 0 2.5%;
+}
+.start {
+	width: 95%;
+	padding: 1.5%;
+	margin: 2.5%;
+	background-color: #282828;
+	border: none;
+	color: white;
+	font-weight: bold;
+}
+.start:hover {
+	background-color: #202020;
+}
+.or {
+	font-size: 1vw;
+	text-align: center;
+}
+.sign {
+	font-size: 2.5vw;
+	text-align: center;
+	align-items: center;
+}
+button.facebook {
+	width: 45%;
+	padding: 1.5%;
+	margin: 2.5%;
+	background-color: #32508E;
+	border: none;
+	float: left;
+	color: white;
+	font-weight: bold;
+}
+button.facebook:hover {
+	background-color: #194296;
+}
+button.google {
+	width: 45%;
+	padding: 1.5%;
+	margin: 2.5%;
+	background-color: #DD4B39;
+	border: none;
+	color: white;
+	font-weight: bold;
+}
+button.google:hover {
+	background-color: #DB3520;
+}
+.login {
+	font-size: 1vw;
+	padding: 1%;
+	margin: 2.5%;
+	text-align: right;
+}
+.container {
+	position: absolute;
+	top: 8%;
+	height: 89%;
+	width: 100%;
+	color: white;
+}
+.timeline {
+	position: relative;
+	width: 50%;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+.logout {
+	float: right;
+	font-size: 1.5em;
+	color: white;
+	list-style: none;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+a {
+	text-decoration: none !important;
+}
+.searchbox {
+	color: black;
+}
+.profileimg img {
+	width: 150px;
+}
+.profile-sidebar {
+	float: left;
+	width: 20%;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 5%;
+}
+.profile-center {
+	width: 50%;
+	margin-left: 30%;
+	margin-right: 5%;
+	margin-top: 5%;
+}
+.footer {
+  bottom: 0;
+  background-color: #232323;
+  height: 3%;
+  width: 100%;
+  position: fixed;
+}
+.footer p {
+  color: #848484;
+  font-size: 0.7em;
+  text-align: right;
+  margin: 1em;
+  font-family: Garamond, Times New Roman;
+}
